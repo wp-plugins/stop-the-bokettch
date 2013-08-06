@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
-Tested up to: 3.6 beta 3
-Stable tag: 0.2
+Tested up to: 3.6
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,8 @@ Translation: [@mamy315](https://twitter.com/mamy315)
 2. サイト表示時の警告表示
 
 == Changelog ==
+= 0.3 =
+* WordPress 3.6 対応
 
 = 0.2 =
 * 多言語化対応

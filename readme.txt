@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
-Tested up to: 3.6 beta 3
-Stable tag: 0.2
+Tested up to: 3.6
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,18 +16,18 @@ This is a plugin for displaying an alert notification to the ToolBar if you have
 Notice : Notice messages will be displayed to the role of publish_posts.
 
 = What's "Bokettch"?? =
-Bokettch is "Webourgeon_com"（[@Webourgeon_com](https://twitter.com/Webourgeon_com)） who is doing activities as a member of WordBench Chiba （WordBench is user group of local in Japan）
-"Bokkechies" who she recognized is given to the original number of Bokettch from her.
+Bokettch is "Webourgeon_com"([@Webourgeon_com](https://twitter.com/Webourgeon_com)) who is doing activities as a member of WordBench Chiba (WordBench is user group of local in Japan)
+"Bokettchies" who she recognized is given to the unique number.
 Her behavior is famous for cute and goofy. so We name a person like her "Bokettch".
 
-Then, too. There is "[Bokettch report](http://bokettch.warna.info/)" for reporting thier behavior.(Sorry. This site is only Japanese!)
+Then, too. There is "[Bokettch report](http://bokettch.warna.info/)" for reporting their behavior.(Sorry. This site is only Japanese!)
 
 Example of "Bokettch":
 
 * tripping on the smooth road
 * get lost
-* boiled water too much and missed it
-* to take the wrong train
+* the water has boiled away
+* take the wrong train
 * soft drink bomb
 
 and so on....
@@ -47,6 +47,8 @@ Were you expecting more steps? Sorry to disappoint.
 2. Alert on Site
 
 == Changelog ==
+= 0.3 =
+ * Compatible up to: 3.6
 
 = 0.2 =
 * Support i18n
