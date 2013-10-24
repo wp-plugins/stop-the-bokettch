@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
-Tested up to: 3.6
-Stable tag: 0.3
+Tested up to: 3.7-RC2
+Stable tag: 0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

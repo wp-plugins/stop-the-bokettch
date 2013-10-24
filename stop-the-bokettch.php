@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Stop the Bokettch
- * @version 0.3
+ * @version 0.4
  */
 /*
 Plugin Name: Stop the Bokettch
 Plugin URI: http://www.warna.info/archives/2649/
 Description: This is a plugin for displaying an alert notification to the ToolBar if you have checked "Discourage search engines from indexing this site" of Site Visibility Options. So This is very useful for missed check options.
 Author: jim912
-Version: 0.3
+Version: 0.4
 Author URI: http://www.warna.info/
 Text Domain: stop-the-bokettch
 Domain Path: /languages/
