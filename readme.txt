@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
-Tested up to: 3.7-RC2
-Stable tag: 0.4
+Tested up to: 3.8
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Were you expecting more steps? Sorry to disappoint.
 2. Alert on Site
 
 == Changelog ==
+= 0.5 =
+ * Compatible up to: 3.8. Using Genericons.
+
 = 0.3 =
  * Compatible up to: 3.6
 
@@ -56,6 +59,3 @@ Were you expecting more steps? Sorry to disappoint.
 
 = 0.1 =
 * public release
-
-
-doing activities
