@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Stop the Bokettch
- * @version 0.5
+ * @version 0.5.1
  */
 /*
 Plugin Name: Stop the Bokettch
 Plugin URI: http://www.warna.info/archives/2649/
 Description: This is a plugin for displaying an alert notification to the ToolBar if you have checked "Discourage search engines from indexing this site" of Site Visibility Options. So This is very useful for missed check options.
 Author: jim912
-Version: 0.5
+Version: 0.5.1
 Author URI: http://www.warna.info/
 Text Domain: stop-the-bokettch
 Domain Path: /languages/
@@ -35,8 +35,9 @@ class Stop_the_Bokettch {
 			add_action( 'admin_bar_menu'    , array( &$this, 'bokettch_notice' ), 9999 );
 			add_action( 'admin_print_styles', array( &$this, 'bokettch_style' ) );
 			add_action( 'wp_head'           , array( &$this, 'bokettch_style' ) );
-			if ( $this->is_admin_responsive() ) {
-				add_action( 'admin_print_styles', array( &$this, 'load_genericons' ) );
+
+			if ( $this->is_admin_responsive() && ( is_admin() || get_user_option( 'show_admin_bar_front', get_current_user_id() ) === 'true' ) ) {
+				wp_enqueue_style( 'genericons', $this->genericons_dir_url . 'genericons.css', array(), '3.0.2' );
 			}
 		}
 	}
@@ -57,11 +58,6 @@ class Stop_the_Bokettch {
 			'href'  => apply_filters( 'bokettch-notice-link', $link )
 		));
  	}
-
-
-	public function load_genericons() {
-		wp_enqueue_style( 'genericons', $this->genericons_dir_url . 'genericons.css', array(), '3.0.2' );
-	}
 
 
 	public function bokettch_style() {

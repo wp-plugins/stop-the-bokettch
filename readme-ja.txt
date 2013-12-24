@@ -3,7 +3,7 @@ Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 0.5
+Stable tag: 0.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ Translation: [@mamy315](https://twitter.com/mamy315)
 2. サイト表示時の警告表示
 
 == Changelog ==
+= 0.5.1 =
+* サイト表示時に genericons.css が読み込まれていなかった問題を修正
+
 = 0.5 =
 * WordPress 3.8 対応。アイコンにジェネリコンを利用
 

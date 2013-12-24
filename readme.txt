@@ -3,7 +3,7 @@ Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
 Tested up to: 3.8
-Stable tag: 0.5
+Stable tag: 0.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ Were you expecting more steps? Sorry to disappoint.
 2. Alert on Site
 
 == Changelog ==
+= 0.5.1 =
+ * fix : genericons.css has not loaded on the front.
+
 = 0.5 =
  * Compatible up to: 3.8. Using Genericons.
 
