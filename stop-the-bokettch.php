@@ -8,7 +8,7 @@ Plugin Name: Stop the Bokettch
 Plugin URI: http://www.warna.info/archives/2649/
 Description: This is a plugin for displaying an alert notification to the ToolBar if you have checked "Discourage search engines from indexing this site" of Site Visibility Options. So This is very useful for missed check options.
 Author: jim912
-Version: 0.5.1
+Version: 0.6.0
 Author URI: http://www.warna.info/
 Text Domain: stop-the-bokettch
 Domain Path: /languages/
@@ -26,6 +26,8 @@ class Stop_the_Bokettch {
 			$this->icon_url = plugin_dir_url( __FILE__ ) . 'images/' . __( 'default.png', 'stop-the-bokettch' );
 			$this->genericons_dir_url = plugins_url( 'fonts/genericons/', __FILE__ );
 		}
+		add_action( 'load-post-new.php'                ,array( $this, 'enqueue_js' ) );
+		add_action( 'load-post.php'                    ,array( $this, 'enqueue_js' ) );
 	}
 	
 	
@@ -39,6 +41,25 @@ class Stop_the_Bokettch {
 			if ( $this->is_admin_responsive() && ( is_admin() || get_user_option( 'show_admin_bar_front', get_current_user_id() ) === 'true' ) ) {
 				wp_enqueue_style( 'genericons', $this->genericons_dir_url . 'genericons.css', array(), '3.0.2' );
 			}
+		}
+	}
+
+
+	public function enqueue_js() {
+		if ( isset( $_GET['post_type'] ) && post_type_exists( $_GET['post_type'] ) ) {
+			$post_type = $_GET['post_type'];
+		} else {
+			$post_type = 'post';
+		}
+		$post_type_obj = get_post_type_object( $post_type );
+
+		if ( $post_type_obj->public == true ) {
+			$js_path = plugin_dir_url( __FILE__ ) . 'js/bokettch.js';
+			wp_enqueue_script( 'bokettch_publish', $js_path , array(), '0.6.0', true );
+			wp_enqueue_script( 'bokettch_publish', $js_path , array(), '0.6.0', true );
+			wp_localize_script( 'bokettch_publish', 'bokettch', array(
+				'confilm' => __( 'Are you sure to publish the post?', 'stop-the-bokettch' ),
+			));
 		}
 	}
 	

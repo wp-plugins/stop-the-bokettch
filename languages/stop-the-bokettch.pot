@@ -21,3 +21,7 @@ msgstr ""
 #: stop-the-bokettch/stop-the-bokettch.php:39
 msgid "NO INDEX"
 msgstr ""
+
+#: stop-the-bokettch/stop-the-bokettch.php:53
+msgid "Are you sure to publish the post?"
+msgstr ""

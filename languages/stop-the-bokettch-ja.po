@@ -2,13 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stop the Bokettch\n"
 "POT-Creation-Date: 2013-06-17 18:45+0900\n"
-"PO-Revision-Date: 2013-06-21 18:37+0900\n"
+"PO-Revision-Date: 2014-05-18 01:02+0900\n"
 "Last-Translator: Hitoshi Omagari <hitoshi@prime-strategy.co.jp>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _e;__\n"
 
 #: stop-the-bokettch/stop-the-bokettch.php:9
@@ -28,3 +28,7 @@ msgstr "default.png"
 #: stop-the-bokettch/stop-the-bokettch.php:39
 msgid "NO INDEX"
 msgstr "検索インデックス停止中"
+
+#: stop-the-bokettch/stop-the-bokettch.php:53
+msgid "Are you sure to publish the post?"
+msgstr "公開しようとしてるけど本当にいいですか？"
