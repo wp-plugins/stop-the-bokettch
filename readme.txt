@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
-Tested up to: 3.9.1
-Stable tag: 0.6.0
+Tested up to: 4.0 beta-2
+Stable tag: 0.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,11 @@ Were you expecting more steps? Sorry to disappoint.
 2. Alert on Site
 
 == Changelog ==
+= 0.6.1 =
+ * new : Add setting for publish confirmation in Writing Settings page.
+ * update : genericon update to version 3.1
+ * fix : When Search Engine Visibility setting unchecked, plugin translation off.
+
 = 0.6.0 =
  * new : Display confilm dialog at publish post and pages.
 

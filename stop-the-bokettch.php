@@ -1,45 +1,52 @@
 <?php
-/**
- * @package Stop the Bokettch
- * @version 0.5.1
- */
 /*
 Plugin Name: Stop the Bokettch
 Plugin URI: http://www.warna.info/archives/2649/
 Description: This is a plugin for displaying an alert notification to the ToolBar if you have checked "Discourage search engines from indexing this site" of Site Visibility Options. So This is very useful for missed check options.
 Author: jim912
-Version: 0.6.0
+Version: 0.6.1
 Author URI: http://www.warna.info/
 Text Domain: stop-the-bokettch
 Domain Path: /languages/
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 class Stop_the_Bokettch {
 	
 	private $icon_url;
 	private $genericons_dir_url;
+	private $version;
+	private $genericons_version = '3.1';
+	private $publish_notice;
 	
 	public function __construct() {
+		$plugin_data = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+		$this->version = $plugin_data['version'];
+		$this->publish_notice = get_option( 'bokettch-publish-notice', 1 );
+		load_plugin_textdomain( 'stop-the-bokettch', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 		if ( ! get_option( 'blog_public' ) ) {
-			add_action( 'init', array( &$this, 'init' ) );
-			load_plugin_textdomain( 'stop-the-bokettch', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+			add_action( 'init'             , array( $this, 'init' ) );
 			$this->icon_url = plugin_dir_url( __FILE__ ) . 'images/' . __( 'default.png', 'stop-the-bokettch' );
 			$this->genericons_dir_url = plugins_url( 'fonts/genericons/', __FILE__ );
 		}
-		add_action( 'load-post-new.php'                ,array( $this, 'enqueue_js' ) );
-		add_action( 'load-post.php'                    ,array( $this, 'enqueue_js' ) );
+		if ( $this->publish_notice ) {
+			add_action( 'load-post-new.php', array( $this, 'enqueue_js' ) );
+			add_action( 'load-post.php'    , array( $this, 'enqueue_js' ) );
+		}
+		add_action( 'admin_init'           , array( $this, 'add_publish_notice_setting' ) );
 	}
 	
 	
 	public function init() {
 		$capability = apply_filters( 'bokettch-notice-capability', 'publish_posts' );
 		if ( current_user_can( $capability ) ) {
-			add_action( 'admin_bar_menu'    , array( &$this, 'bokettch_notice' ), 9999 );
-			add_action( 'admin_print_styles', array( &$this, 'bokettch_style' ) );
-			add_action( 'wp_head'           , array( &$this, 'bokettch_style' ) );
+			add_action( 'admin_bar_menu'    , array( $this, 'bokettch_notice' ), 9999 );
+			add_action( 'admin_print_styles', array( $this, 'bokettch_style' ) );
+			add_action( 'wp_head'           , array( $this, 'bokettch_style' ) );
 
 			if ( $this->is_admin_responsive() && ( is_admin() || get_user_option( 'show_admin_bar_front', get_current_user_id() ) === 'true' ) ) {
-				wp_enqueue_style( 'genericons', $this->genericons_dir_url . 'genericons.css', array(), '3.0.2' );
+				wp_enqueue_style( 'genericons', $this->genericons_dir_url . 'genericons.css', array(), $this->genericons_version );
 			}
 		}
 	}
@@ -55,15 +62,14 @@ class Stop_the_Bokettch {
 
 		if ( $post_type_obj->public == true ) {
 			$js_path = plugin_dir_url( __FILE__ ) . 'js/bokettch.js';
-			wp_enqueue_script( 'bokettch_publish', $js_path , array(), '0.6.0', true );
-			wp_enqueue_script( 'bokettch_publish', $js_path , array(), '0.6.0', true );
+			wp_enqueue_script( 'bokettch_publish', $js_path , array(), $this->version, true );
+			wp_enqueue_script( 'bokettch_publish', $js_path , array(), $this->version, true );
 			wp_localize_script( 'bokettch_publish', 'bokettch', array(
 				'confilm' => __( 'Are you sure to publish the post?', 'stop-the-bokettch' ),
 			));
 		}
 	}
-	
-	
+
 
 	public function bokettch_notice( $wp_admin_bar ) {
 		$title = '<span class="ab-icon"></span><span class="ab-label">' . __( 'NO INDEX', 'stop-the-bokettch' ) . '</span>';
@@ -125,6 +131,23 @@ class Stop_the_Bokettch {
 	
 	private function is_admin_responsive() {
 		return version_compare( '3.8.*', get_bloginfo( 'version' ), '<=' );
+	}
+	
+	
+	public function add_publish_notice_setting() {
+		add_settings_field( 'publish_notice', __( 'Confirmation of publish post', 'stop-the-bokettch' ), array( $this, 'publish_notice_field' ), 'writing' );
+		register_setting( 'writing', 'bokettch-publish-notice' );
+	}
+	
+	
+	public function publish_notice_field() {
+?>
+		<input type="hidden" name="bokettch-publish-notice" value="1">
+		<label for="bokettch-publish-notice">
+			<input type="checkbox" name="bokettch-publish-notice" id="bokettch-publish-notice" value="0"<?php echo $this->publish_notice == 0 ? ' checked="checked"' : ''; ?>>
+			<?php _e( 'Disable', 'stop-the-bokettch' ); ?>
+		</label>
+<?php
 	}
 }
 new Stop_the_Bokettch;

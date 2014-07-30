@@ -2,8 +2,8 @@
 Contributors: jim912
 Tags: admin, search engine
 Requires at least: 3.3
-Tested up to: 3.9.1
-Stable tag: 0.6.0
+Tested up to: 4.0 beta-2
+Stable tag: 0.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,11 @@ Translation: [@mamy315](https://twitter.com/mamy315)
 2. サイト表示時の警告表示
 
 == Changelog ==
+= 0.6.1 =
+* 公開時の確認ダイアログを無効化できるよう「投稿設定」ページに設定項目を追加
+* 同梱している genericon を 3.1にバージョンアップ
+* 検索エンジンでの表示でチェックを外した場合に翻訳されていなかった点を修正
+
 = 0.6.0 =
 * 投稿、固定ページの公開時に確認ダイアログを表示。
 
